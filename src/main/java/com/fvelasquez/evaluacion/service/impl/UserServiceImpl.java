@@ -4,7 +4,6 @@ import com.fvelasquez.evaluacion.dto.request.UserRequest;
 import com.fvelasquez.evaluacion.dto.response.UserResponse;
 import com.fvelasquez.evaluacion.entity.PhoneEntity;
 import com.fvelasquez.evaluacion.entity.UserEntity;
-import com.fvelasquez.evaluacion.exception.IdNotFoundException;
 import com.fvelasquez.evaluacion.repository.UserRepository;
 import com.fvelasquez.evaluacion.service.UserService;
 import com.fvelasquez.evaluacion.utils.JwtUtil;
@@ -35,12 +34,13 @@ public class UserServiceImpl implements UserService {
         List<PhoneEntity> phones = request.getPhones().stream().map(phoneRequest -> {
             PhoneEntity phoneEntity = PhoneEntity.builder()
                     .number(phoneRequest.getNumber())
-                    .cityCode(phoneRequest.getCityCode())
-                    .countryCode(phoneRequest.getCountryCode())
+                    .cityCode(phoneRequest.getCitycode())
+                    .contryCode(phoneRequest.getContrycode())
                     .build();
             return phoneEntity;
         }).toList();
         Set<PhoneEntity> phoneEntities = new HashSet<>(phones);
+
 
         UserEntity instance = UserEntity.builder()
                 .email(request.getEmail())
@@ -48,7 +48,9 @@ public class UserServiceImpl implements UserService {
                 .password(request.getPassword()).isActive(true).build();
         instance.setPhones(phoneEntities);
 
-        UserEntity response = userRepository.save(instance);
+
+       UserEntity response = userRepository.save(instance);
+
         JwtUtil jwtToken = buildTokenJWT(response);
         response.setLastLogin(response.getCreatedDate());
         response.setToken(jwtToken.toString());
@@ -56,15 +58,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    @Override
-    public UserResponse read(UUID id) {
-        return toResponse(this.userRepository.findById(id).orElseThrow(() -> new IdNotFoundException()));
-    }
 
-    @Override
-    public List<UserResponse> findAll() {
-        return userRepository.findAll().stream().map(this::toResponse).toList();
-    }
 
     private UserResponse toResponse(UserEntity entity) {
         UserResponse userResponse = new UserResponse();
@@ -79,7 +73,5 @@ public class UserServiceImpl implements UserService {
         JwtUtil jwtToken = new JwtUtil(response.getName(), response.getEmail(),date);
         return jwtToken;
     }
-
-
 
 }

@@ -15,16 +15,20 @@ import java.io.Serializable;
 public class PhoneEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "phone_generator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "phone_id")
     private Long id;
 
     private String number;
+
     @Column(name = "city_code", length = 5)
     private String cityCode;
+
     @Column(name = "country_code", length = 5)
-    private String countryCode;
+    private String contryCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
 }

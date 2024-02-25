@@ -1,19 +1,9 @@
 package com.fvelasquez.evaluacion.entity;
 
-
 import com.fvelasquez.evaluacion.bean.AuditableEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,7 +11,7 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @EntityListeners({AuditingEntityListener.class})
 @Getter
 @Setter
@@ -31,7 +21,8 @@ import java.util.UUID;
 public class UserEntity extends AuditableEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private UUID id;
 
     @Column(name = "name", length = 150)
@@ -43,15 +34,13 @@ public class UserEntity extends AuditableEntity implements Serializable {
     @Column(name = "password", length = 350)
     private String password;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<PhoneEntity> phones;
 
     @Column(name = "token", length = 500)
     private String token;
-
     @Column(name = "last_login", columnDefinition = "timestamp")
     private LocalDateTime lastLogin;
-
     @Column(name = "is_active", columnDefinition = "boolean default TRUE")
     private Boolean isActive;
 

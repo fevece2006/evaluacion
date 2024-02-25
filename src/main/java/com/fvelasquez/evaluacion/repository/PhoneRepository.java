@@ -1,13 +1,12 @@
 package com.fvelasquez.evaluacion.repository;
 
-import com.fvelasquez.evaluacion.entity.UserEntity;
+
+import com.fvelasquez.evaluacion.entity.PhoneEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.UUID;
 
 
-public interface UserRepository extends JpaRepository<UserEntity, UUID> {
-
+public interface PhoneRepository extends JpaRepository<PhoneEntity, UUID> {
 }

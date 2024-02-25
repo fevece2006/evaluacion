@@ -10,8 +10,7 @@ public interface UserService {
 
     UserResponse create(UserRequest request);
 
-    UserResponse read(UUID id);
 
-    List<UserResponse> findAll();
+
 
 }

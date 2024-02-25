@@ -9,8 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PhoneRequest {
+public class PhoneRequest{
     private String number;
-    private String cityCode;
-    private String countryCode;
+    private String citycode;
+    private String contrycode;
 }
