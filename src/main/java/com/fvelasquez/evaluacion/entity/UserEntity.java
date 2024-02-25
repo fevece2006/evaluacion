@@ -1,6 +1,7 @@
 package com.fvelasquez.evaluacion.entity;
 
 
+import com.fvelasquez.evaluacion.bean.AuditableEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -27,15 +28,18 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserEntity {
+public class UserEntity extends AuditableEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     @Column(name = "name", length = 150)
     private String name;
+
     @Column(name = "email", length = 300, unique = true)
     private String email;
+
     @Column(name = "password", length = 350)
     private String password;
 
