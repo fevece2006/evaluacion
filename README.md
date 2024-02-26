@@ -16,13 +16,12 @@ http://localhost:8081/h2-ui
 http://localhost:8081/swagger-ui/index.html
 
 **Pruebas en postman**
-Registro 01: Se registra un usuario con un solo objeto teléfono.
 Metodo: POST
 URL: http://localhost:8081/swagger-ui/index.html
+BODY(raw): Request en Formato JSON
 
-BODY(raw): 
+Registro 01: Se registra un usuario con un solo objeto teléfono.
 
-JSON1:
 {
     "name": "Fernando Velasquez",
     "email": "fvelasquez@dominio.cl",
