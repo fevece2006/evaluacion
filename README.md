@@ -1,27 +1,38 @@
-# NISUM: Evaluación Java 
+# **NISUM: Evaluación Java** 
 
-**##La aplicación**
+## **La aplicación**
 El desarrollo de la aplicación trata de registro de usuarios.
 
 Se implementa y utiliza las siguientes tecnologías:
+
 Base de datos H2
+
 Java 17
+
 Gradle 8.5
-```
-**Acceso a la base de datos**
+
+## **Acceso a la base de datos**
 se ingresa al navegador por la url:
 http://localhost:8081/h2-ui
-```
-**Documentación - Swaggwer**
+
+## **Documentación - Swaggwer**
 http://localhost:8081/swagger-ui/index.html
 
-**Pruebas en postman**
-Metodo: POST
-URL: http://localhost:8081/swagger-ui/index.html
+## **Pruebas en postman**
+Método: POST
+
+URL: http://localhost:8081/swagger-ui/index.html](http://localhost:8081/api/user
+
 BODY(raw): Request en Formato JSON
 
-Registro 01: Se registra un usuario con un solo objeto teléfono.
+Validaciones: 
 
+Email: Tiene que cumplir el formato aaaaaaa@dominio.cl
+
+Password: Tamaño Mínimo 8, debe tener al menos una mayúscula, una minúscula y un número
+
+Registro 01: Se registra un usuario con un solo objeto teléfono.
+```
 {
     "name": "Fernando Velasquez",
     "email": "fvelasquez@dominio.cl",
@@ -34,8 +45,9 @@ Registro 01: Se registra un usuario con un solo objeto teléfono.
         }
     ]
 }
-
+```
 Registro 02: Se registra un usuario con dos objetos teléfono.
+```
 {
     "name": "Lionel Messi",
     "email": "Lmessi@dominio.cl",
@@ -53,5 +65,5 @@ Registro 02: Se registra un usuario con dos objetos teléfono.
         }
     ]
 }
-
+```
 
