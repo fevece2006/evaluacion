@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Entity
 @Table(name="phones")
@@ -15,9 +16,9 @@ import java.io.Serializable;
 public class PhoneEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "phone_id")
-    private Long id;
+    private UUID id;
 
     private String number;
 
@@ -28,7 +29,7 @@ public class PhoneEntity implements Serializable {
     private String contryCode;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private UserEntity user;
 
 }

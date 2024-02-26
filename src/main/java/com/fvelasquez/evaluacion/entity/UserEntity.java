@@ -6,6 +6,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.UUID;
@@ -39,8 +40,10 @@ public class UserEntity extends AuditableEntity implements Serializable {
 
     @Column(name = "token", length = 500)
     private String token;
-    @Column(name = "last_login", columnDefinition = "timestamp")
+
+    @Column(name = "last_login")
     private LocalDateTime lastLogin;
+
     @Column(name = "is_active", columnDefinition = "boolean default TRUE")
     private Boolean isActive;
 

@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public class AuditableEntity {
     @Column(name = "created_date")
+
     @CreatedDate
     private LocalDateTime createdDate;
 
