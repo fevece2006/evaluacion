@@ -3,15 +3,17 @@ package com.fvelasquez.evaluacion.controller;
 import com.fvelasquez.evaluacion.dto.request.UserRequest;
 import com.fvelasquez.evaluacion.dto.response.UserResponse;
 import com.fvelasquez.evaluacion.service.UserService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
 
 @RestController
+@Validated
 @RequestMapping("/api/user")
 @AllArgsConstructor
 public class UserController {
