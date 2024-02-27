@@ -21,7 +21,7 @@ http://localhost:8081/swagger-ui/index.html
 ## **Pruebas en postman**
 Método: POST
 
-URL: http://localhost:8081/swagger-ui/index.html](http://localhost:8081/api/user
+URL: http://localhost:8081/api/user
 
 BODY(raw): Request en Formato JSON
 
